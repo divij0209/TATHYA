@@ -1,0 +1,67 @@
+/* style/style.css - Tathya landing page inspired by GSAP homepage */
+
+:root{
+  --bg-1:#070707;
+  --bg-2:#0f0f12;
+  --accent:#8aa2ff;
+  --muted:#bfc7e6;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;}
+body{
+  margin:0;
+  font-family:'Poppins',system-ui,Segoe UI,Roboto,Arial,sans-serif;
+  background:radial-gradient(1200px 400px at 10% 10%, rgba(75,108,255,0.06), transparent), linear-gradient(180deg,var(--bg-1),var(--bg-2));
+  color:#f6f7fb;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+.container{max-width:1100px;margin:0 auto;padding:0 20px}
+
+/* Header / nav */
+.site-header{position:fixed;left:0;right:0;top:0;z-index:60}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;backdrop-filter:blur(6px)}
+.logo{font-weight:800;font-size:1.25rem;letter-spacing:1px;color:#fff}
+.nav-center{list-style:none;display:flex;gap:28px;margin:0;padding:0}
+.nav-center a{color:rgba(255,255,255,0.85);text-decoration:none;font-weight:500}
+.nav-right .btn-pill{background:transparent;border:1px solid rgba(255,255,255,0.08);padding:8px 14px;border-radius:999px;color:#fff;cursor:pointer}
+.nav-right .btn-pill:hover{background:rgba(255,255,255,0.02)}
+
+/* Hero */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;padding:120px 20px 80px}
+.hero-inner{text-align:center;max-width:1000px}
+.motto{font-size:clamp(2.2rem,8vw,6.8rem);line-height:0.95;margin:0;font-weight:800;text-transform:lowercase;letter-spacing:1px;color:#fff}
+.sub{color:var(--muted);margin-top:14px;font-size:1rem}
+.cta-row{margin-top:28px;display:flex;gap:16px;justify-content:center}
+.primary-cta{background:linear-gradient(90deg,#6f8bff,#9fb7ff);border:none;padding:12px 22px;border-radius:10px;color:#04133b;font-weight:700;cursor:pointer}
+.ghost-cta{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px 18px;border-radius:10px;color:#fff}
+
+/* Floating shapes */
+.float-shape{position:absolute;border-radius:50%;filter:blur(36px);opacity:0.95;mix-blend-mode:screen}
+.shape-1{width:340px;height:200px;right:5%;top:20%;background:radial-gradient(circle at 30% 30%, rgba(138,162,255,0.9), rgba(138,162,255,0.15))}
+.shape-2{width:220px;height:220px;left:8%;top:35%;background:radial-gradient(circle at 40% 60%, rgba(255,140,180,0.9), rgba(255,140,180,0.12))}
+.shape-3{width:160px;height:160px;right:18%;bottom:18%;background:radial-gradient(circle at 40% 40%, rgba(120,255,200,0.85), rgba(120,255,200,0.06))}
+
+/* Features */
+.section-light{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:80px 0}
+.section-dark{padding:80px 0}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:20px}
+.feature{background:rgba(255,255,255,0.02);padding:22px;border-radius:12px}
+
+.demo-box{background:rgba(255,255,255,0.02);height:150px;border-radius:12px;margin-top:12px}
+
+.site-footer{padding:28px 0;text-align:center;color:rgba(255,255,255,0.6)}
+
+/* Responsive */
+@media (max-width:800px){
+  .nav-center{display:none}
+  .logo{font-size:1rem}
+  .motto{font-size:clamp(1.6rem,8vw,3rem)}
+  .hero{padding-top:100px}
+  .shape-1{display:none}
+}
+
+/* Utility */
+.hidden{opacity:0}

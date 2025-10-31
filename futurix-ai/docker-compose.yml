@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  postgres-db:
+    image: postgres:15-alpine
+    container_name: postgres-db
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    ports:
+      - "5432:5432" # Expose DB port to host machine for debugging
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: always
+
+  extraction-service:
+    build: ./extraction-service
+    container_name: extraction-service
+    ports:
+      - "8001:8001" # Expose extraction port to host
+    env_file:
+      - .env
+    restart: always
+
+  backend-core:
+    build: ./backend-core
+    container_name: backend-core
+    ports:
+      - "8000:8000" # Expose main backend port to host
+    env_file:
+      - .env
+    depends_on:
+      - postgres-db
+      - extraction-service
+    restart: always
+
+  # data-automation-service:
+  #   build: ./data-automation-service
+  #   container_name: data-automation-service
+  #   ports:
+  #     - "8002:8002"
+  #   env_file:
+  #     - .env
+  #   depends_on:
+  #     - backend-core
+  #   restart: always
+
+  # frontend:
+  #   build: ./frontend
+  #   container_name: frontend
+  #   ports:
+  #     - "5173:5173"
+  #   env_file:
+  #     - .env
+  #   depends_on:
+  #     - backend-core
+  #   restart: always
+
+volumes:
+  postgres_data:
